@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+<title>登录界面</title>
+<script>
+function check_admin(form)
+{
+	if(DAO)
+	if(form.username.value=="")
+	{
+		alert("请输入用户账号!");
+		form.name.focus();
+		return false;
+	}
+	if(form.password.value=="")
+	{
+		alert("请输入用户密码!");
+		form.password.focus();
+		return false;
+	}
+	if (form.check.value=="")
+	{
+		alert("验证码不正确，请重新输入！");
+		form.verify.focus();
+		return false;
+	}
+	/* //验证验证码是否匹配
+	String checkcode=request.getParameter("check");
+	HttpSession session=request.getSession();
+	String rightcode=(String)session.getAttribute("rand");
+	if(!checkcode.equals(rightcode)){
+		alert("请输入验证码!");
+		form.verify.focus();
+		return false;
+	} */
+	return true;
+}
+</script>
+</head>
+<body>
+<form action="../LoginServlet1" method="post" onSubmit="return check_admin(this);">
+<table border="2px" align="center" width="550px" height="300px">
+	<tr>
+		<th colspan="4" align="center">JSP学习论坛留言板——前台登录</th>
+	</tr>
+	<tr>
+		<td colspan="2" align="right">账号：&nbsp;</td>
+		<td colspan="2">&nbsp;<input type="text" name="username" id="username"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="right">密码：&nbsp;</td>
+		<td colspan="2">&nbsp;<input type="password" name="password" id="password"></td>
+	</tr>
+	<tr>
+		<td colspan="2"  align="right">系统验证码：&nbsp;</td>
+    	<td colspan="2">&nbsp;<img border=0 src="verifyCode.jsp"></td>
+	</tr>
+	<tr>
+		<td colspan="2"  align="right">输入验证码：&nbsp;</td>
+    	<td colspan="2">&nbsp;<input type="text" name="check" id="check"></td>
+	</tr>
+	<tr><input type="hidden" name="flag" value="0"></tr>
+	<tr>
+		<td colspan="4" align="center">
+		<input type="submit" value="确定">
+		&nbsp;<input type="reset" value="重置" >
+		</td>
+	</tr>
+</table>
+</form>
+<p align="center"><a href="register-1.jsp">还没注册？请点击注册!</a></p>
+</body>
+</html>
